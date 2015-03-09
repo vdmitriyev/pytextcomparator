@@ -20,4 +20,4 @@ Create two ```txt``` files with text inside and name them as follows ```text-a.t
 
 ### TO-DO
 
-* [] Check the sklearn functionality
+* [ ] Check the sklearn functionality
