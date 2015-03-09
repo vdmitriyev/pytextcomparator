@@ -7,7 +7,11 @@ Python utility that compares two texts together using following techniques:
 
 ### Usage
 
-Create two ```txt``` files with text inside and name them as follows ```text-a.txt``` and ```text-b.txt```
+Create two ```txt``` files with text inside and name them as follows ```text-a.txt``` and ```text-b.txt```.
+Navigate to teh 'pytextcomparator' folder and run the ```pytextcomparator.py``` python script:
+```
+python pytextcomparator.py
+```
 
 ### Materials
 
