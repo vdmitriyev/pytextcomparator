@@ -13,6 +13,7 @@ Create two ```txt``` files with text inside and name them as follows ```text-a.t
 
 * [How to calculate cosine similarity given 2 sentence strings?](http://stackoverflow.com/questions/15173225/how-to-calculate-cosine-similarity-given-2-sentence-strings-python)
 * [Python: tf-idf-cosine: to find document similarity](http://stackoverflow.com/questions/12118720/python-tf-idf-cosine-to-find-document-similarity/18914884#18914884)
+* Collection of the stop words in 29 languages can be found [here](https://code.google.com/p/stop-words/)
 
 ### Dependencies
 
