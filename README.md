@@ -8,9 +8,9 @@ Python utility that compares two texts together using following techniques:
 ### Usage
 
 Create two ```txt``` files with text inside and name them as follows ```text-a.txt``` and ```text-b.txt```.
-Navigate to teh 'pytextcomparator' folder and run the ```pytextcomparator.py``` python script:
+Navigate to teh 'textcomparator' folder and run the ```textcomparator.py``` python script:
 ```
-python pytextcomparator.py
+python textcomparator.py
 ```
 
 ### Materials
