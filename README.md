@@ -26,3 +26,4 @@ python textcomparator.py
 ### TO-DO
 
 * [ ] Check the sklearn functionality
+* [ ] Try [fuzzywuzzy](https://github.com/seatgeek/fuzzywuzzy) python package more about the package can be sees in the article [FuzzyWuzzy: Fuzzy String Matching in Python](http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/)
