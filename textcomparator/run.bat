@@ -1,5 +1,5 @@
 @echo off
 REM @author Viktor Dmitriyev
 REM python textcomparator.py > output.txt
-python textcomparator.py
+python textcomparator.py > output.txt
 pause

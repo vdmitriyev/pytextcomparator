@@ -59,7 +59,7 @@ class ComputeCosine(object):
 
         """
 
-        vec1 = self.text_to_vector(vec1, ignore_stopwords)
+        vec1 = self.text_to_vector(vec1, ignore_stopwords, print_vector=True)
         vec2 = self.text_to_vector(vec2, ignore_stopwords)
 
         intersection = set(vec1.keys()) & set(vec2.keys())
@@ -75,7 +75,7 @@ class ComputeCosine(object):
         else:
             return float(numerator) / denominator
 
-    def text_to_vector(self, text, ignore_stopwords=False):
+    def text_to_vector(self, text, ignore_stopwords=False, print_vector=False):
         """
             (obj, str, boolean) -> list(int)
 
@@ -86,8 +86,13 @@ class ComputeCosine(object):
 
         sw = StopWords().get_stop_words()
         if ignore_stopwords:
+            # only one word remains
+            # its wrong
             uniqueToListWords = list(set(words) & set(set(words) ^ set(sw)))
             words = uniqueToListWords
+
+        if print_vector:
+            print Counter(words).most_common()
 
         return Counter(words)
 
@@ -107,9 +112,9 @@ def main():
         print 'text A: \n{}\n'.format(filea)
         print 'text B: \n{}\n'.format(fileb)
 
-        print 'similarity-diff\t\t\t :{}'.format(similarity.ratio())
+        # print 'similarity-diff\t\t\t :{}'.format(similarity.ratio())
         print 'similarity-cosine\t\t :{}'.format(cc.get_cosine(filea, fileb))
-        print 'similarity-cosine-no-stopwords\t :{}'.format(cc.get_cosine(filea, fileb, ignore_stopwords=True))
+        #print 'similarity-cosine-no-stopwords\t :{}'.format(cc.get_cosine(filea, fileb, ignore_stopwords=True))
 
     except Exception, ex:
         print '[i] create 2 files with texts to be compared'
