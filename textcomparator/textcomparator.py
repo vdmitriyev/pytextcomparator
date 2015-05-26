@@ -4,7 +4,7 @@ __author__ = 'Viktor Dmitriyev'
 __copyright__ = 'Copyright 2015, Viktor Dmitriyev'
 __credits__ = ['Viktor Dmitriyev']
 __license__ = 'MIT'
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 __maintainer__ = '-'
 __email__   = ''
 __status__  = 'dev'
@@ -59,7 +59,7 @@ class ComputeCosine(object):
 
         """
 
-        vec1 = self.text_to_vector(vec1, ignore_stopwords, print_vector=True)
+        vec1 = self.text_to_vector(vec1, ignore_stopwords, print_vector=False)
         vec2 = self.text_to_vector(vec2, ignore_stopwords)
 
         intersection = set(vec1.keys()) & set(vec2.keys())
@@ -83,16 +83,21 @@ class ComputeCosine(object):
 
         WORD = re.compile(r'\w+')
         words = WORD.findall(text)
-
         sw = StopWords().get_stop_words()
-        if ignore_stopwords:
-            # only one word remains
-            # its wrong
-            uniqueToListWords = list(set(words) & set(set(words) ^ set(sw)))
-            words = uniqueToListWords
 
         if print_vector:
-            print Counter(words).most_common()
+            def pp(x):
+                if x[1] > 30 and x[0] not in sw:
+                    print '{0} : {1}'.format(x[0], x[1])
+            map(pp, Counter(words).most_common())
+
+        if ignore_stopwords:
+            counted = Counter(words)
+            uniqueToListWords = list(set(words) & set(set(words) ^ set(sw)))
+            _result = Counter()
+            for key in uniqueToListWords:
+                _result[key] = counted[key]
+            return _result
 
         return Counter(words)
 
@@ -109,12 +114,12 @@ def main():
 
         similarity = difflib.SequenceMatcher(a = filea.lower(), b = fileb.lower())
 
-        print 'text A: \n{}\n'.format(filea)
-        print 'text B: \n{}\n'.format(fileb)
+        print 'text A:\n{}\n'.format(filea)
+        print 'text B:\n{}\n'.format(fileb)
 
-        # print 'similarity-diff\t\t\t :{}'.format(similarity.ratio())
-        print 'similarity-cosine\t\t :{}'.format(cc.get_cosine(filea, fileb))
-        #print 'similarity-cosine-no-stopwords\t :{}'.format(cc.get_cosine(filea, fileb, ignore_stopwords=True))
+        print 'similarity-diff\t\t\t : {}'.format(similarity.ratio())
+        print 'similarity-cosine\t\t : {}'.format(cc.get_cosine(filea, fileb))
+        print 'similarity-cosine-no-stopwords\t : {}'.format(cc.get_cosine(filea, fileb, ignore_stopwords=True))
 
     except Exception, ex:
         print '[i] create 2 files with texts to be compared'
