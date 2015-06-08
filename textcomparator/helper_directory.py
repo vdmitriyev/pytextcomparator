@@ -10,7 +10,7 @@ __maintainer__ = '-'
 __email__ = ''
 __status__ = 'dev'
 __date__ = '26.01.2015'
-__description__ = 'Helper for the crawler that manages directory'
+__description__ = 'Directory helper'
 
 import os
 import string
@@ -20,7 +20,6 @@ import shutil
 from time import gmtime, strftime
 
 RAND_RANGE = 7
-
 
 class DirectoryHelper():
 

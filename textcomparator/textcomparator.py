@@ -13,7 +13,20 @@ __description__ = 'Compares two texts in various ways.'
 
 import sys
 import difflib
-from helper_directory import DirectoryHelper
+
+# importing custom libraries
+try:
+    from helper_directory import DirectoryHelper
+except:
+    import urllib
+    target_path = 'https://raw.githubusercontent.com/vdmitriyev/sourcecodesnippets/master/python/helper_directory/helper_directory.py'
+    target_name = 'helper_directory.py'
+    urllib.urlretrieve (target_path, target_name)
+    from helper_directory import DirectoryHelper
+finally:
+    import helper_directory
+    if helper_directory.__version__ != '1.0.0':
+        print 'Wrong version of the library {0}. Check the version'.format(helper_directory.__file__)
 
 import re, math
 from collections import Counter
