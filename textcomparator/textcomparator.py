@@ -17,7 +17,7 @@ import difflib
 # importing custom libraries
 try:
     from helper_directory import DirectoryHelper
-except:
+except Exception as e:
     import urllib
     target_path = 'https://raw.githubusercontent.com/vdmitriyev/sourcecodesnippets/master/python/helper_directory/helper_directory.py'
     target_name = 'helper_directory.py'
@@ -68,8 +68,8 @@ class ComputeCosine(object):
         """
             (obj, list, list) -> float
 
-            Return the cosine of the vectors computed as descibed here: http://en.wikipedia.org/wiki/Cosine_similarity
-
+            Return the cosine of the vectors computed as here :
+                -   http://en.wikipedia.org/wiki/Cosine_similarity
         """
 
         vec1 = self.text_to_vector(vec1, ignore_stopwords, print_vector=False)
@@ -106,9 +106,9 @@ class ComputeCosine(object):
 
         if ignore_stopwords:
             counted = Counter(words)
-            uniqueToListWords = list(set(words) & set(set(words) ^ set(sw)))
+            unique_to_words = list(set(words) & set(set(words) ^ set(sw)))
             _result = Counter()
-            for key in uniqueToListWords:
+            for key in unique_to_words:
                 _result[key] = counted[key]
             return _result
 
